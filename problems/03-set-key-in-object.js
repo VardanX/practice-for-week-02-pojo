@@ -15,7 +15,15 @@ setKeyInObject(obj1, "num", 3); // => {str: "hello", num: 3}
 
 function setKeyInObject(obj, string, value) {
   // Your code here
+  let newString = string;
+  let new_obj = {...obj};
+  new_obj[`${newString}`] = value;
+  return new_obj;
 }
 
+let obj1 = {str: "hello"}
+console.log(setKeyInObject(obj1, "num", 3)); // => {str: "hello", num: 3}
+let obj = {}
+console.log(setKeyInObject(obj, "apple", "yum")); // => {apple: "yum"}
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 module.exports = setKeyInObject;
