@@ -29,7 +29,53 @@ console.log(countScores(peeps)); //=> { Anthony: 4, Fred: 4, Winnie: 6 }
 
 function countScores(people) {
   // Your code here
+  let finalObject = {};
+  let count = 0;
+  let name = "";
+  let score = 0;
+  let nameList = [];
+  
+    for(let i = 0; i < people.length; i++) {
+        let newObj = people[i];
+        for(let j in newObj) {
+            if(typeof newObj[j] === "string") {
+                name = newObj[j];
+                
+            }
+            else if(typeof newObj[j] === "number") {
+                score = newObj[j];
+
+                if(nameList.includes(name)) {
+                    finalObject[name] = finalObject[name] + score;
+                    count ++;
+                }
+                else {
+                    finalObject[name] = score;
+                    count ++;
+                }
+                nameList.push(name)
+            }
+        }
+    }
+    return finalObject;
 }
+let ppl = [{name: "Anthony", score: 10},
+            {name: "Fred", score : 10},
+            {name: "Anthony", score: -8},
+            {name: "Winnie", score: 12}];
+
+console.log(countScores(ppl)); //=> { Anthony: 2, Fred: 10, Winnie: 12 }
+
+let peeps = [
+  {name: "Anthony", score: 2},
+  {name: "Winnie", score: 2},
+  {name: "Fred", score: 2},
+  {name: "Winnie", score: 2},
+  {name: "Fred", score: 2},
+  {name: "Anthony", score: 2},
+  {name: "Winnie", score: 2}
+];
+console.log(countScores(peeps)); //=> { Anthony: 4, Fred: 4, Winnie: 6 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 module.exports = countScores;

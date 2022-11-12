@@ -13,7 +13,23 @@ console.log(arrayConverter(["apple", "banana", "potato", "banana"])); // => {app
 
 function arrayConverter(array) {
   // Your code here
+  let count = 0;
+  let ultimateObject = {};
+  
+  for(let i = 0; i < array.length; i++) {
+    let word = array[i]
+    let tempArray = [];
+    for(let j = array.indexOf(word); j < array.length; j++) {
+      if (word === array[j] && !tempArray.includes(word)) {
+        count ++;
+      }
+    }
+    ultimateObject[word] = count;
+    count = 0;
+  }
+  return ultimateObject
 }
+console.log(arrayConverter(["apple", "banana", "potato", "banana"])); // => {apple: 1, banana: 2, potato: 1}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 module.exports = arrayConverter;
